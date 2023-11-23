@@ -1,24 +1,43 @@
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
-import Button from '@mui/material/Button'
+import { Link as RouterLink, useMatch, useResolvedPath } from 'react-router-dom';
 import { useShoppingCart } from "../context/ShoppingCartContext"
-import { ShoppingCart } from "./ShoppingCart"
+import { AppBar, Toolbar, Button, IconButton, Drawer, List, ListItem, ListItemText, Badge } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { useState } from "react";
 
 export function Navbar() {
-    const { openCart, cartQuantity } = useShoppingCart()
+  const { openCart, cartQuantity } = useShoppingCart();
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-    return (
-        <nav>
-            <Link to="/">
+  const handleDrawerOpen = () => {
+    setDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  };
+
+  return (
+    <>
+      <AppBar position="static" style={{ backgroundColor: '#333333', color: '#D946EF', fontWeight: 'bold' }}>
+        <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <IconButton color="inherit" onClick={handleDrawerOpen}>
+              <MenuIcon />
+            </IconButton>
+            <RouterLink to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
               Tienda the bois
-            </Link> 
-          <ul>
-            <CustomLink to="/store">Tienda</CustomLink>
-          </ul>
-            {cartQuantity > 0 && (
-              <Button
-                onClick={openCart} 
-                style={{ width: "3rem", height: "3rem", position: "relative" }} variant="outlined">
-                <svg
+            </RouterLink>
+            <List component="nav" style={{ fontWeight: 'bold' }}>
+              <CustomLink to="/store">Tienda</CustomLink>
+            </List>
+          </div>
+          {cartQuantity > 0 && (
+            <Button
+              onClick={openCart}
+              style={{ width: '3rem', height: '3rem', position: 'relative', borderColor: '#D946EF', }}
+              variant="outlined"
+            >
+              <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 576 512"
                   fill="#D946EF"
@@ -40,22 +59,30 @@ export function Navbar() {
                 >
                   {cartQuantity}
                 </div>
-              </Button>
-            )}
-            
-        </nav>
-    )
+            </Button>
+          )}
+        </Toolbar>
+      </AppBar>
+      <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
+        <List>
+          <CustomLink to="/store" onClick={handleDrawerClose}>
+            Tienda
+          </CustomLink>
+          {/* Add more CustomLink items as needed */}
+        </List>
+      </Drawer>
+    </>
+  );
 }
 
-function CustomLink({ to, children, ...props }) {
-    const resolvedPath = useResolvedPath(to)
-    const isActive = useMatch({ path: resolvedPath.pathname, end: true })
-  
-    return (
-      <li className={isActive ? "active" : ""}>
-        <Link to={to} {...props}>
-          {children}
-        </Link>
-      </li>
-    )
+function CustomLink({ to, children, onClick }) {
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+
+  return (
+    <ListItem button className={isActive ? 'active' : ''} component={RouterLink} to={to} onClick={onClick}>
+      <ListItemText primary={children} />
+    </ListItem>
+  );
 }
+
