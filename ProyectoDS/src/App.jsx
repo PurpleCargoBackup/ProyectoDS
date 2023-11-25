@@ -6,7 +6,6 @@ import { Navbar } from "./components/Navbar"
 import { ShoppingCartProvider } from "./context/ShoppingCartContext"
 import Contact from './pages/Contact';
 import About from './pages/About';
-import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
       </Routes>
-      <Footer />
     </ShoppingCartProvider>
   )
 }
