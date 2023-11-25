@@ -1,12 +1,14 @@
-import { Link as RouterLink, useMatch, useResolvedPath } from 'react-router-dom';
+import { Link as RouterLink, useMatch, useResolvedPath, useNavigate } from 'react-router-dom';
 import { useShoppingCart } from "../context/ShoppingCartContext"
-import { AppBar, Toolbar, Button, IconButton, Drawer, List, ListItem, ListItemText, Badge } from '@mui/material';
+import { AppBar, Toolbar, Button, IconButton, Drawer, List, ListItem, ListItemText, TextField } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
 
 export function Navbar() {
   const { openCart, cartQuantity } = useShoppingCart();
+  const [searchQuery, setSearchQuery] = useState('');
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -14,6 +16,16 @@ export function Navbar() {
 
   const handleDrawerClose = () => {
     setDrawerOpen(false);
+  };
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/store?search=${searchQuery}`);
+    setSearchQuery('');
   };
 
   return (
@@ -30,6 +42,21 @@ export function Navbar() {
             <List component="nav" style={{ fontWeight: 'bold' }}>
               <CustomLink to="/store">Tienda</CustomLink>
             </List>
+          </div>
+          <div>
+            <form onSubmit={handleSearchSubmit} style={{ display: 'flex', alignItems: 'center' }}>
+              <TextField
+                label="Buscar productos"
+                variant="outlined"
+                size="small"
+                value={searchQuery}
+                onChange={handleSearch}
+                style={{ marginRight: '1rem', color: '#D946EF', backgroundColor: "#FFF" }}
+              />
+              <Button type="submit" variant="outlined" style={{ color: '#D946EF', borderColor: '#D946EF' }}>
+                Buscar
+              </Button>
+            </form>
           </div>
           {cartQuantity > 0 && (
             <Button

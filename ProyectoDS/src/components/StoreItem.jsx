@@ -38,6 +38,8 @@ export function StoreItem({ id, title, price, category, image }) {
           '&:hover': {
             transform: 'scale(1.05)',
           },
+          borderRadius: 2, 
+          border:"2px solid #D946EF"
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
