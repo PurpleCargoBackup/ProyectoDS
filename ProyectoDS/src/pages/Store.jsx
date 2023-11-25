@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Box, Divider, Typography, Select, MenuItem, Button } from '@mui/material';
 import { StoreItem } from '../components/StoreItem';
-import backgroundImage from '../img/bg-test-1.jpg';
+import backgroundImage from '../img/bg-test-2.jpg';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 
@@ -67,18 +67,18 @@ const Store = () => {
     const filteredItems = filterStoreItems();
     
     if (searchQuery !== '' && selectedCategory !== 'All') {
-      setDisplayMessage(`Mostrando resultados para "${searchQuery}" en ${selectedCategory}`);
+      setDisplayMessage(`Showing results for "${searchQuery}" in ${selectedCategory}`);
     } else if (searchQuery !== '') {
-      setDisplayMessage(`Mostrando resultados para "${searchQuery}"`);
+      setDisplayMessage(`Showing results for "${searchQuery}"`);
     } else if (selectedCategory !== 'All') {
-      setDisplayMessage(`Mostrando resultados en ${selectedCategory}`);
+      setDisplayMessage(`Showing results in ${selectedCategory}`);
     } else {
-      setDisplayMessage(`Resultados: ${filteredItems.length}`);
+      setDisplayMessage(`Results: ${filteredItems.length}`);
     }
   }, [searchQuery, storeItems, selectedCategory, sortOrder]);
 
   return (
-    <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', margin: 'auto', paddingTop: '4rem' }}>
+    <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', margin: 'auto', minHeight: '100vh', paddingTop: '4rem' }}>
       <Box display="flex" flexDirection="column" alignItems="center" width="80%" margin="auto">
         {/* Filter Bar */}
         <Box

@@ -1,0 +1,21 @@
+.images {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+   }
+   
+   .images img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    max-width: 100%;
+   }
+
+   .image-container {
+    text-align: center;
+   }
+
+   .image-container p {
+    margin-top: 1rem; 
+}
+

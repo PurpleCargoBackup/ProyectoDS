@@ -4,6 +4,8 @@ import { AppBar, Toolbar, Button, IconButton, Drawer, List, ListItem, ListItemTe
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
 
+const lighterColor = '#E86FF3';
+
 export function Navbar() {
   const { openCart, cartQuantity } = useShoppingCart();
   const [searchQuery, setSearchQuery] = useState('');
@@ -30,20 +32,20 @@ export function Navbar() {
 
   return (
     <>
-      <AppBar position="static" style={{ backgroundColor: '#333333', color: '#D946EF', fontWeight: 'bold' }}>
+      <AppBar position="static" style={{ backgroundColor: '#222222', color: '#D946EF', fontWeight: 'bold' }}>
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <IconButton color="inherit" onClick={handleDrawerOpen}>
               <MenuIcon />
             </IconButton>
-            <RouterLink to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Tienda the bois
+            <RouterLink to="/" style={{ color: 'inherit', textDecoration: 'none', paddingLeft: '6px', marginRight: "1rem" }}>
+              The Bois
             </RouterLink>
-            <List component="nav" style={{ fontWeight: 'bold' }}>
-              <CustomLink to="/store">Tienda</CustomLink>
-            </List>
+            <CustomLink to="/store">Tienda</CustomLink>
+            <CustomLink to="/contact">Contáctanos</CustomLink>
+            <CustomLink to="/about">Sobre Nosotros</CustomLink>
           </div>
-          <div>
+          <div style={{ marginRight: '100px' }}>
             <form onSubmit={handleSearchSubmit} style={{ display: 'flex', alignItems: 'center' }}>
               <TextField
                 label="Buscar productos"
@@ -95,7 +97,12 @@ export function Navbar() {
           <CustomLink to="/store" onClick={handleDrawerClose}>
             Tienda
           </CustomLink>
-          {/* Add more CustomLink items as needed */}
+          <CustomLink to="/contact" onClick={handleDrawerClose}>
+            Contáctanos
+          </CustomLink>
+          <CustomLink to="/about" onClick={handleDrawerClose}>
+            Sobre Nosotros
+          </CustomLink>
         </List>
       </Drawer>
     </>
@@ -107,7 +114,7 @@ function CustomLink({ to, children, onClick }) {
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
   return (
-    <ListItem button className={isActive ? 'active' : ''} component={RouterLink} to={to} onClick={onClick}>
+    <ListItem button className={isActive ? 'active' : ''} component={RouterLink} to={to} onClick={onClick} style={{ justifyContent: 'space-evenly', fontWeight: 'bold', width: 'auto', display: 'inline-block' }}>
       <ListItemText primary={children} />
     </ListItem>
   );
