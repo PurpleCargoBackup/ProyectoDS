@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Homepage.css';
 import Footer from '../components/Footer';
+import mall from "../imagenes/mall.jpg"
 
 function Homepage() {
  return (
@@ -20,7 +21,7 @@ function Homepage() {
       </header>
       <main>
         <div className="commercial-center">
-          <img src="/imagenes/mall.jpg" alt="Commercial Center" />
+          <img src={mall} alt="Commercial Center" />
         </div>
       </main>
       <Footer />
