@@ -41,14 +41,14 @@ export function Navbar() {
             <RouterLink to="/" style={{ color: 'inherit', textDecoration: 'none', paddingLeft: '6px', marginRight: "1rem" }}>
               The Bois
             </RouterLink>
-            <CustomLink to="/store">Tienda</CustomLink>
-            <CustomLink to="/contact">Contáctanos</CustomLink>
-            <CustomLink to="/about">Sobre Nosotros</CustomLink>
+            <CustomLink to="/store">Store</CustomLink>
+            <CustomLink to="/contact">Contact</CustomLink>
+            <CustomLink to="/about">About Us</CustomLink>
           </div>
           <div style={{ marginRight: '100px' }}>
             <form onSubmit={handleSearchSubmit} style={{ display: 'flex', alignItems: 'center' }}>
               <TextField
-                label="Buscar productos"
+                label="Search products"
                 variant="outlined"
                 size="small"
                 value={searchQuery}
@@ -56,7 +56,7 @@ export function Navbar() {
                 style={{ marginRight: '1rem', color: '#D946EF', backgroundColor: "#FFF" }}
               />
               <Button type="submit" variant="outlined" style={{ color: '#D946EF', borderColor: '#D946EF' }}>
-                Buscar
+                Search
               </Button>
             </form>
           </div>
@@ -84,7 +84,10 @@ export function Navbar() {
                   position: 'absolute', 
                   bottom: 0, 
                   right: 0, 
-                  transform: 'translate(10%, 10%)' }}
+                  transform: 'translate(10%, 10%)',
+                  ":hover": {
+                    color: "lighterColor"
+                  } }}
                 >
                   {cartQuantity}
                 </div>
@@ -95,13 +98,13 @@ export function Navbar() {
       <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
         <List>
           <CustomLink to="/store" onClick={handleDrawerClose}>
-            Tienda
+            Store
           </CustomLink>
           <CustomLink to="/contact" onClick={handleDrawerClose}>
-            Contáctanos
+            Contact
           </CustomLink>
           <CustomLink to="/about" onClick={handleDrawerClose}>
-            Sobre Nosotros
+            About Us
           </CustomLink>
         </List>
       </Drawer>

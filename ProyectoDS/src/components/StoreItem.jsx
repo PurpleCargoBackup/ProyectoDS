@@ -78,8 +78,8 @@ export function StoreItem({ id, title, price, category, image }) {
           }}
         >
           {quantity === 0 ? (
-            <Button onClick={() => increaseCartQuantity(id)} sx={{ width: 1 }}>
-              + Agregar al carrito
+            <Button onClick={() => increaseCartQuantity(id)} sx={{ width: 1 }} variant='outlined'>
+              + Add to Cart
             </Button>
           ) : (
             <div
@@ -106,7 +106,7 @@ export function StoreItem({ id, title, price, category, image }) {
                   -
                 </Button>
                 <div>
-                  <span>{quantity}</span> en orden
+                  <span>{quantity}</span> in cart
                 </div>
                 <Button
                   onClick={() => increaseCartQuantity(id)}
@@ -122,7 +122,7 @@ export function StoreItem({ id, title, price, category, image }) {
                 variant="outlined"
                 color="warning"
               >
-                Eliminar
+                Remove
               </Button>
             </div>
           )}

@@ -1,18 +1,19 @@
 .footer {
-    position:fixed;
-    bottom: 0;
+    position:static;
     left: 0;
     width: 100%;
     right: 0;
-    background-color: #333;
+    background-color: #222222;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 0;
    }
 
    
 
    .social-media {
+    
+    position: static;
     display: flex;
     flex-direction: column;
     align-items: center;

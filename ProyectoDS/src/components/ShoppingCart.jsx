@@ -29,13 +29,14 @@ export function ShoppingCart({ isOpen }) {
             </IconButton>
           </div>
           <Typography variant="h6" gutterBottom>
-            Carro de compras
+            Shopping Cart
           </Typography>
           <Stack spacing={3}>
             {cartItems.map((cartItem) => (
               <CartItem key={cartItem.id} id={cartItem.id} quantity={cartItem.quantity} />
             ))}
           </Stack>
+          <hr style={{ marginTop: "2rem" }}></hr>
           <div style={{ marginRight: 'auto', fontWeight: 'bold', fontSize: '1.25rem' }}>
             Total{" "}
             {formatCurrency(

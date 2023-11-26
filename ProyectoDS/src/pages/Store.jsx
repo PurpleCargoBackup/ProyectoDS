@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Box, Divider, Typography, Select, MenuItem, Button } from '@mui/material';
 import { StoreItem } from '../components/StoreItem';
 import backgroundImage from '../img/bg-test-2.jpg';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Footer from './../components/Footer';
 
 
 const Store = () => {
@@ -11,7 +12,6 @@ const Store = () => {
   const [sortOrder, setSortOrder] = useState('asc');
   const [searchQuery, setSearchQuery] = useState('');
   const [displayMessage, setDisplayMessage] = useState('');
-  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -37,13 +37,6 @@ const Store = () => {
   const handleSortToggle = () => {
     setSortOrder((prevOrder) => (prevOrder === 'asc' ? 'desc' : 'asc'));
   };
-
-  const handleQueryChange = (filteredItems) => {
-    setDisplayMessage(searchQuery !== ''
-    ? `Mostrando resultados para "${searchQuery}"`
-    : `Resultados: ${filteredItems ? filteredItems.length : 0}`
-  );
-  }
 
   const filterStoreItems = () => {
     // Filter and sort store items based on the selected category and sort order
@@ -78,7 +71,7 @@ const Store = () => {
   }, [searchQuery, storeItems, selectedCategory, sortOrder]);
 
   return (
-    <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', margin: 'auto', minHeight: '100vh', paddingTop: '4rem' }}>
+    <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', margin: 'auto', minHeight: '100vh', paddingTop: '4rem', paddingBottom: '1rem' }}>
       <Box display="flex" flexDirection="column" alignItems="center" width="80%" margin="auto">
         {/* Filter Bar */}
         <Box
@@ -94,7 +87,7 @@ const Store = () => {
           paddingBottom={1}
         >
           <Typography variant="subtitle1" marginLeft={2}>
-            {displayMessage || `Resultados: ${filterStoreItems().length}`}
+            {displayMessage || `Results: ${filterStoreItems().length}`}
           </Typography>
           <Box display="flex" gap={2} alignItems="center" marginRight={2}>
             {/* Right side: Filter options (Category, Price Sort, etc.) */}
@@ -159,7 +152,7 @@ const Store = () => {
                 },
               }}
             >
-              {sortOrder === 'asc' ? 'Menor precio' : 'Mayor precio'}
+              {sortOrder === 'asc' ? 'Lower price' : 'Higher price'}
             </Button>
           </Box>
         </Box>
@@ -180,6 +173,9 @@ const Store = () => {
           ))}
         </Grid>
       </Box>
+      <div className='footer2'>
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/About.css';
+import Footer from '../components/Footer';
 
 
 const About = () => {
@@ -17,14 +18,18 @@ const About = () => {
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
                 <img src=".\imagenes\victor.jpg" alt="photo1" style={{ width: '15%', height: 'auto', borderRadius: '50%' }} />
                 <img src=".\imagenes\eduardo.jpg" alt="photo2" style={{ width: '15%', height: 'auto', borderRadius: '50%' }} />
-                <img src=".\imagenes\victor.jpg" alt="photo3" style={{ width: '15%', height: 'auto', borderRadius: '50%' }} />
+                <img src=".\imagenes\benjamin.jpg" alt="photo3" style={{ width: '15%', height: 'auto', borderRadius: '50%' }} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center',  marginTop: '1rem', textAlign: 'center' }}>
                 <p className='name'>Victor Fuentes</p>
                 <p className='name'>Eduardo Torres</p>
                 <p className='name'>Benjamin Gonzalez</p>
             </div>
+            <div className='footer2'>
+            <Footer />
+            </div>
         </div>
+        
     
  );
 };
