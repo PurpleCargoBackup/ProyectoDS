@@ -19,7 +19,7 @@ function Contact() {
       <div style={{ width: '80%', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', marginTop: "40px" }}>
          <h2>Contact Us</h2>
          <form onSubmit={handleSubmit}>
-            <label htmlFor="fname">Nombre Completo</label>
+            <label htmlFor="fname">Full name</label>
             <input type="text" id="fname" name="fullName" value={formData.fullName} onChange={handleChange} required style={{ width: "100%",
                padding: "12px 20px",
                margin: "8px 0",
@@ -35,7 +35,7 @@ function Contact() {
                border: "1px solid #ccc",
                boxSizing: "border-box" }} />
    
-            <label htmlFor="message">Mensaje</label>
+            <label htmlFor="message">Message</label>
             <textarea id="message" name="message" value={formData.message} onChange={handleChange} required style={{ width: "100%",
                padding: "12px 20px",
                margin: "8px 0",
@@ -52,10 +52,10 @@ function Contact() {
                width: "100%", ":hover": {
                   opacity: 0.8,
                } }}>
-               Enviar
+               Send
             </button>
          </form>
-         <p style={{ fontSize: "20px", marginLeft: "640px" }}>¡Gracias por tu Mensaje!</p>
+         <p style={{ fontSize: "20px", marginLeft: "640px" }}>Thanks for your message!</p>
      </div>
      <div className='footer2'>
      <Footer />

@@ -8,12 +8,12 @@ function Homepage() {
  return (
     <div className="App">
       <header className="App-header">
-        <h1>Tienda The Bois</h1>
+        <h1>The Bois</h1>
         <nav>
           <ul className='store'>
             <li>
               
-              <Link to="/store">Tienda</Link>
+              <Link to="/store">Store</Link>
               
             </li>
           </ul>

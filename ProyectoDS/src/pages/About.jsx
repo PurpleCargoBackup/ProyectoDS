@@ -14,10 +14,10 @@ const About = () => {
 
  return (
     <div className="about-us">
-            <h1>Sobre Nosotros</h1>
-            <h2>¡Bienvenidos a nuestra página!</h2>
-            <p>Nuestro enfoque para este trabajo es poder facilitar la compra de distintos articulos para la gente y que se vea de una forma amigable para el comprador.</p>
-            <p>Aqui tienen unas imagenes de los creadores:</p>
+            <h1>About us</h1>
+            <h2>Welcome to our members page!</h2>
+            <p>Our focus in this work is to be able to design a simple and intuitive page for the customer.</p>
+            <p>Here is a picture of each member:</p>
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
                 <img src={victor} alt="photo1" style={{ width: '15%', height: 'auto', borderRadius: '50%' }} />
                 <img src={eduardo} alt="photo2" style={{ width: '15%', height: 'auto', borderRadius: '50%' }} />
